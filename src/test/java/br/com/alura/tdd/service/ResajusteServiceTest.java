@@ -9,37 +9,35 @@ import java.time.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ResajusteServiceTest {
+
+    private ReajusteService service;
+
+    private Funcionario funcionario;
+    @BeforeEach
+    public void inicializar(){
+        this.service = new ReajusteService();
+        this.funcionario = new Funcionario("Ana",LocalDate.now(),new BigDecimal("1000.00"));
+    }
+
     @Test
     public void reajusteDeveSerDeTresPorCentoQuandoODesempenho(){
-        ReajusteService service = new ReajusteService();
-        Funcionario novoFuncionario = new Funcionario(
-                "Ana", LocalDate.now(), new BigDecimal("1000.00"));
-        service.ajustarSalario(novoFuncionario, Desempenho.A_DESEJAR);
-        assertEquals(new BigDecimal("1030.00"), novoFuncionario.getSalario());
+        service.ajustarSalario(funcionario, Desempenho.A_DESEJAR);
+        assertEquals(new BigDecimal("1030.00"), funcionario.getSalario());
     }
 
     @Test
     public void reajusteDeveSerDeDezPorCentoQuandoODesempenho(){
-        ReajusteService service = new ReajusteService();
-        Funcionario novoFuncionario = new Funcionario(
-                "Ana", LocalDate.now(), new BigDecimal("1000.00"));
-        service.ajustarSalario(novoFuncionario, Desempenho.BOM);
-        assertEquals(new BigDecimal("1100.00"), novoFuncionario.getSalario());
+        service.ajustarSalario(funcionario, Desempenho.BOM);
+        assertEquals(new BigDecimal("1100.00"), funcionario.getSalario());
     }
     @Test
     public void reajusteDeveSerDeVintePorCentoQuandoODesempenho(){
-        ReajusteService service = new ReajusteService();
-        Funcionario novoFuncionario = new Funcionario(
-                "Ana", LocalDate.now(), new BigDecimal("1000.00"));
-        service.ajustarSalario(novoFuncionario, Desempenho.OTIMO);
-        assertEquals(new BigDecimal("1200.00"), novoFuncionario.getSalario());
+        service.ajustarSalario(funcionario, Desempenho.OTIMO);
+        assertEquals(new BigDecimal("1200.00"), funcionario.getSalario());
     }
     @Test
     public void reajusteDeveSerDeQuarentaPorCentoQuandoODesempenho(){
-        ReajusteService service = new ReajusteService();
-        Funcionario novoFuncionario = new Funcionario(
-                "Ana", LocalDate.now(), new BigDecimal("1000.00"));
-        service.ajustarSalario(novoFuncionario, Desempenho.EXPETACULAR);
-        assertEquals(new BigDecimal("1400.00"), novoFuncionario.getSalario());
+        service.ajustarSalario(funcionario, Desempenho.EXPETACULAR);
+        assertEquals(new BigDecimal("1400.00"), funcionario.getSalario());
     }
 }

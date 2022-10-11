@@ -10,9 +10,5 @@ public class ReajusteService {
          BigDecimal percentReajuste = desempenho.percentualReajuste();
          BigDecimal reajuste = novoFuncionario.getSalario().multiply(percentReajuste);
          novoFuncionario.reajustarSalario(reajuste);
-
-
-
-
      }
 }

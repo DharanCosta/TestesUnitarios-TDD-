@@ -30,7 +30,4 @@ public enum Desempenho {
     };
 
     public abstract BigDecimal percentualReajuste();
-
-
-
 }
